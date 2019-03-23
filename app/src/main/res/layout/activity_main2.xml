@@ -11,25 +11,25 @@
         android:id="@+id/tvuser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="User: " />
+        android:text="@string/activity2_name" />
     <TextView
         android:id="@+id/tvlastname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Lastname: " />
+        android:text="@string/activity2_lastname" />
     <TextView
         android:id="@+id/tvemail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Email: " />
+        android:text="@string/activity2_email" />
     <TextView
         android:id="@+id/tvgender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Gender: " />
+        android:text="@string/activity2_genders" />
     <Button
         android:id="@+id/btnshare"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SHARE"/>
+        android:text="@string/activity2_btnshare"/>
 </LinearLayout>

@@ -36,9 +36,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-
         btnsubmit.setOnClickListener(v -> {
            String textName=name.getText().toString();
            String textLastname=lastname.getText().toString();

@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Labo3 Ejercicio</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_lastname">LastName</string>
+    <string name="hint_email">Email</string>
+    <string name="gender_m">Male</string>
+    <string name="gender_f">Female</string>
+    <string name="button_text">SUBMIT</string>
+    <string name="activity2_name">Name:</string>
+    <string name="activity2_lastname">Lastname:</string>
+    <string name="activity2_email">Email:</string>
+    <string name="activity2_genders">Gender:</string>
+    <string name="activity2_btnshare">SHARE</string>
 </resources>

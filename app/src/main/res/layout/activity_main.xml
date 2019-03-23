@@ -10,20 +10,20 @@
         android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Name"/>
+        android:hint="@string/hint_name"/>
 
     <EditText
         android:id="@+id/lastname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="LastName"
+        android:hint="@string/hint_lastname"
         android:inputType="text" />
 
     <EditText
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email"
+        android:hint="@string/hint_email"
         android:inputType="textEmailAddress"/>
 
     <RadioGroup
@@ -37,18 +37,18 @@
             android:id="@+id/male"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Male" />
+            android:text="@string/gender_m" />
         <RadioButton
             android:id="@+id/female"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Female"
+            android:text="@string/gender_f"
             />
     </RadioGroup>
     <Button
         android:id="@+id/btnsubmit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SUBMIT"/>
+        android:text="@string/button_text"/>
 
 </LinearLayout>
