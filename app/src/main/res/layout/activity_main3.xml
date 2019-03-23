@@ -27,9 +27,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Gender: " />
-    <Button
-        android:id="@+id/btnshare"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="SHARE"/>
+
 </LinearLayout>

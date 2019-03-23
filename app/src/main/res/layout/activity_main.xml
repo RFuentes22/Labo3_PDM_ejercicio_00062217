@@ -16,7 +16,8 @@
         android:id="@+id/lastname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="LastName"/>
+        android:hint="LastName"
+        android:inputType="text" />
 
     <EditText
         android:id="@+id/email"
@@ -45,9 +46,9 @@
             />
     </RadioGroup>
     <Button
+        android:id="@+id/btnsubmit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:text="SUBMIT"/>
 
 </LinearLayout>
