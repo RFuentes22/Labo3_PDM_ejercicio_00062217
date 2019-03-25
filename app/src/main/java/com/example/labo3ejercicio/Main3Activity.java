@@ -3,10 +3,9 @@ package com.example.labo3ejercicio;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.TextView;
-
-import com.example.labo3ejercicio.utils.AppConstant;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class Main3Activity extends AppCompatActivity {
 
@@ -24,13 +23,18 @@ public class Main3Activity extends AppCompatActivity {
 
         Intent mIntent2 = getIntent();
 
-        if (mIntent2 != null) {
-            mTextView_User.setText(mTextView_User.getText() + mIntent2.getStringExtra(AppConstant.TEXT_Name));
-            mTextView_LastName.setText(mTextView_LastName.getText() + mIntent2.getStringExtra(AppConstant.TEXT_LastName));
-            mTextView_Email.setText(mTextView_Email.getText() + mIntent2.getStringExtra(AppConstant.TEXT_Email));
-            mTextView_Gender.setText(mTextView_Gender.getText() + mIntent2.getStringExtra(AppConstant.TEXT_Gender));
+        try {
+            JSONObject jobj = new JSONObject(mIntent2.getStringExtra("JSON"));
+            if (mIntent2!=null){
+                mTextView_User.setText(mTextView_User.getText() + " " + jobj.getString("name") );
+                mTextView_LastName.setText(mTextView_LastName.getText() + " " + jobj.getString("lastname") );
+                mTextView_Email.setText(mTextView_Email.getText() + " " + jobj.getString("email"));
+                mTextView_Gender.setText(mTextView_Gender.getText() + " " + jobj.getString("gender"));
 
 
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
 
     }

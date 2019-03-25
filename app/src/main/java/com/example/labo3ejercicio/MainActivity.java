@@ -1,19 +1,15 @@
 package com.example.labo3ejercicio;
 
 import android.content.Intent;
-import android.nfc.Tag;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
+import org.json.JSONException;
+import org.json.JSONObject;
 import android.widget.Button;
 
-import com.example.labo3ejercicio.utils.AppConstant;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -46,11 +42,21 @@ public class MainActivity extends AppCompatActivity {
             gender = findViewById(idRadio);
             String genderValue=gender.getText().toString();
 
+            JSONObject json= new JSONObject();
+
+
+            try {
+                json.put("name",textName);
+                json.put("lastname",textLastname);
+                json.put("email",textEmail);
+                json.put("gender",genderValue);
+            }
+            catch (JSONException e){
+
+            }
+
             Intent mIntent=new Intent(MainActivity.this,Main2Activity.class);
-            mIntent.putExtra(AppConstant.TEXT_Name,textName); //identificador
-            mIntent.putExtra(AppConstant.TEXT_LastName,textLastname);
-            mIntent.putExtra(AppConstant.TEXT_Email,textEmail);
-            mIntent.putExtra(AppConstant.TEXT_Gender,genderValue);
+            mIntent.putExtra("JSON", String.valueOf(json));
             startActivity(mIntent);
 
 

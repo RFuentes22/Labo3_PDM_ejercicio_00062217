@@ -5,9 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
-
-import com.example.labo3ejercicio.utils.AppConstant;
-
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Main2Activity extends AppCompatActivity {
@@ -15,6 +13,7 @@ public class Main2Activity extends AppCompatActivity {
 
     private TextView mTextView_User,mTextView_LastName,mTextView_Email,mTextView_Gender;
     private Button mShare;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,32 +26,38 @@ public class Main2Activity extends AppCompatActivity {
         mShare = findViewById(R.id.btnshare);
         Intent mIntent = getIntent();
 
-        if (mIntent!=null){
-            mTextView_User.setText(mTextView_User.getText() + mIntent.getStringExtra(AppConstant.TEXT_Name));
-            mTextView_LastName.setText(mTextView_LastName.getText() + mIntent.getStringExtra(AppConstant.TEXT_LastName));
-            mTextView_Email.setText(mTextView_Email.getText() + mIntent.getStringExtra(AppConstant.TEXT_Email));
-            mTextView_Gender.setText(mTextView_Gender.getText() + mIntent.getStringExtra(AppConstant.TEXT_Gender));
+
+        try {
+            JSONObject jobj = new JSONObject(mIntent.getStringExtra("JSON"));
+            if (mIntent!=null){
+                mTextView_User.setText(mTextView_User.getText() + " " + jobj.getString("name") );
+                mTextView_LastName.setText(mTextView_LastName.getText() + " " + jobj.getString("lastname") );
+                mTextView_Email.setText(mTextView_Email.getText() + " " + jobj.getString("email"));
+                mTextView_Gender.setText(mTextView_Gender.getText() + " " + jobj.getString("gender"));
 
 
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
 
-        mShare.setOnClickListener(v -> {
-            String textUser=mIntent.getStringExtra(AppConstant.TEXT_Name);
-            String textLastname=mIntent.getStringExtra(AppConstant.TEXT_LastName);
-            String textEmail=mIntent.getStringExtra(AppConstant.TEXT_Email);
-            String genderValue= mIntent.getStringExtra(AppConstant.TEXT_Gender);
+
+        try {
+            JSONObject jobj = new JSONObject(mIntent.getStringExtra("JSON"));
+            mShare.setOnClickListener(v -> {
+
+                Intent mIntent2 = new Intent();
+                mIntent2.setType("text/plain");
+                mIntent2.setAction(Intent.ACTION_SEND);
 
 
+                mIntent2.putExtra("JSON", String.valueOf(jobj));
+                startActivity(mIntent2);
+            });
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
-            Intent mIntent2 = new Intent();
-            mIntent2.setType("text/plain");
-            mIntent2.setAction(Intent.ACTION_SEND);
-            mIntent2.putExtra(AppConstant.TEXT_Name,textUser); //identificador
-            mIntent2.putExtra(AppConstant.TEXT_LastName,textLastname);
-            mIntent2.putExtra(AppConstant.TEXT_Email,textEmail);
-            mIntent2.putExtra(AppConstant.TEXT_Gender,genderValue);
 
-            startActivity(mIntent2);
-        });
     }
 }
